@@ -6,14 +6,141 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script type="module" src="app.js"></script>
+  <style>
+    /* Smooth and Rounded Styling */
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      margin: 0;
+    }
+    
+    h2, h3 {
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Typing Effect Styling with Glow */
+    .typing-container {
+      font-size: 1.2em;
+      font-weight: 300;
+      font-family: monospace;
+      color: #ffb6c1; /* Pastel pink for a soft, sigil-like base */
+      text-align: center;
+      min-height: 24px;
+      overflow: hidden;
+      white-space: pre-wrap; /* Allow wrapping */
+      border-right: 0px solid #00ff99;
+      display: block;
+      margin: 0 auto 20px; /* Center and add spacing between sentences */
+      padding-right: 5px;
+      max-width: 100%; /* Prevent overflow */
+      word-wrap: break-word; /* Ensure text wraps */
+      text-shadow: 
+        0 0 5px rgba(255, 182, 193, 0.8), /* Inner glow */
+        0 0 10px rgba(255, 182, 193, 0.6), /* Mid glow */
+        0 0 20px rgba(255, 182, 193, 0.4), /* Outer glow */
+        0 0 40px rgba(255, 182, 193, 0.2); /* Faint outer halo */
+      animation: glowPulse 2s infinite ease-in-out; /* Optional pulsating effect */
+    }
+
+    /* Glow Pulse Animation */
+    @keyframes glowPulse {
+      0% {
+        text-shadow: 
+          0 0 5px rgba(255, 182, 193, 0.8),
+          0 0 10px rgba(255, 182, 193, 0.6),
+          0 0 20px rgba(255, 182, 193, 0.4),
+          0 0 40px rgba(255, 182, 193, 0.2);
+      }
+      50% {
+        text-shadow: 
+          0 0 8px rgba(255, 182, 193, 1),
+          0 0 15px rgba(255, 182, 193, 0.8),
+          0 0 30px rgba(255, 182, 193, 0.6),
+          0 0 60px rgba(255, 182, 193, 0.3);
+      }
+      100% {
+        text-shadow: 
+          0 0 5px rgba(255, 182, 193, 0.8),
+          0 0 10px rgba(255, 182, 193, 0.6),
+          0 0 20px rgba(255, 182, 193, 0.4),
+          0 0 40px rgba(255, 182, 193, 0.2);
+      }
+    }
+
+    /* About Section */
+    #about {
+      padding: 60px 20px;
+      background: #111;
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+
+    #about h3 {
+      font-size: 1.8em;
+      margin: 40px 0 20px;
+      color: #fff;
+    }
+
+    #about .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      padding: 20px;
+      background: #0a0a0a;
+      color: #888;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    /* Hero Section Styling */
+    #hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .letter {
+      position: absolute;
+      font-size: 2em; /* Reduced from 2.5em to 2em */
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      opacity: 0;
+      text-transform: uppercase;
+    }
+
+    /* Final title styling after animation */
+    #final-title {
+      font-size: 2em; /* Reduced from 2.5em to 2em */
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
   <div class="noise-overlay"></div>
   <nav>
     <div class="logo">GOD LLC</div>
     <div class="nav-links">
-      <a href="#framework">Framework</a>
-      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -21,73 +148,159 @@
   <main>
     <section id="hero">
       <div class="hero-content">
-        <h1 class="framework-title">THE PERSUASION FRAMEWORK</h1>
+        <div id="title-container"></div> <!-- Container for animated letters -->
       </div>
       <div class="sigil-container">
         <svg viewBox="0 0 500 500" class="mystical-sigil">
-          <!-- Outer circle -->
           <circle class="sigil-circle" cx="250" cy="250" r="200" />
-          
-          <!-- Inner geometric patterns -->
           <path class="sigil-path" d="M250 50 L450 250 L250 450 L50 250 Z" />
           <circle class="sigil-inner-circle" cx="250" cy="250" r="100" />
-          
-          <!-- Enhanced sacred geometry -->
           <path class="sigil-path" d="M250 100 L250 400 M100 250 L400 250" />
           <path class="sigil-path" d="M250 150 L350 250 L250 350 L150 250 Z" />
-          
-          <!-- Added pentagram -->
           <path class="sigil-path" d="M250 120 L310 320 L150 190 L350 190 L190 320 Z" />
-          
-          <!-- Mystical curves -->
           <path class="sigil-path" d="M250 180 Q350 250 250 320 Q150 250 250 180" />
-          
-          <!-- Added spiraling paths -->
           <path class="sigil-path" d="M250 200 A50 50 0 0 1 300 250 A50 50 0 0 1 250 300 A50 50 0 0 1 200 250 A50 50 0 0 1 250 200" />
-          
-          <!-- Added Eye symbol -->
           <ellipse class="sigil-path" cx="250" cy="250" rx="30" ry="20" />
           <circle class="sigil-path" cx="250" cy="250" r="10" />
-          
-          <!-- Added decorative arcs -->
           <path class="sigil-path" d="M150 150 A141.4 141.4 0 0 1 350 350" />
           <path class="sigil-path" d="M150 350 A141.4 141.4 0 0 1 350 150" />
-
-          <!-- Added heart shape -->
           <path class="sigil-path" d="M250 280 L220 250 Q190 220 220 190 Q250 160 250 190 Q250 160 280 190 Q310 220 280 250 L250 280" />
         </svg>
       </div>
     </section>
 
-    <section id="framework">
-      <div class="framework-grid">
-        <div class="framework-item">
-          <div class="hexagon">
-            <span class="icon">🤖</span>
-          </div>
-          <h3>AI Understanding</h3>
-          <p>Deep learning patterns for enhanced communication</p>
-        </div>
-        <div class="framework-item">
-          <div class="hexagon">
-            <span class="icon">🧠</span>
-          </div>
-          <h3>Human Psychology</h3>
-          <p>Cognitive science meets artificial intelligence</p>
-        </div>
-        <div class="framework-item">
-          <div class="hexagon">
-            <span class="icon">🔄</span>
-          </div>
-          <h3>Adaptive Systems</h3>
-          <p>Dynamic response mechanisms for optimal interaction</p>
-        </div>
+    <section id="about">
+      <div class="about-content">
+        <h2>About GOD LLC</h2>
+        <div class="typing-container" id="about-text-1"></div>
+        <div class="typing-container" id="about-text-2"></div>
+        <div class="typing-container" id="about-text-3"></div>
+        <div class="typing-container" id="about-text-4"></div>
+        <div class="typing-container" id="about-text-5"></div>
+        <div class="typing-container" id="about-text-6"></div>
+        <div class="typing-container" id="about-text-7"></div>
+        <div class="typing-container" id="about-text-8"></div>
+        <div class="typing-container" id="about-text-9"></div>
+        <div class="typing-container" id="about-text-10"></div>
+        <div class="typing-container" id="about-text-11"></div>
+        <div class="typing-container" id="about-text-12"></div>
+        <div class="typing-container" id="about-text-13"></div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p> 2025 GOD LLC. Shaping the future of human-AI commmunication.</p>
+    <p>© 2025 GOD LLC. Shaping the future of human-AI communication.</p>
   </footer>
+
+  <script>
+    // Letter Animation for Title
+    const titleText = "THE PERSUASION FRAMEWORK";
+    const titleContainer = document.getElementById("title-container");
+    const letters = titleText.split("");
+
+    // Create letter elements and position them randomly
+    letters.forEach((letter, index) => {
+      const letterElement = document.createElement("div");
+      letterElement.className = "letter";
+      letterElement.textContent = letter;
+      
+      // Random initial position (off-screen or across the screen)
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const randomX = Math.random() * viewportWidth * 2 - viewportWidth; // Wider range for angles
+      const randomY = Math.random() * viewportHeight * 2 - viewportHeight; // Wider range for angles
+      const randomAngle = Math.random() * 360; // Random rotation
+
+      letterElement.style.left = `${randomX}px`;
+      letterElement.style.top = `${randomY}px`;
+      letterElement.style.transform = `rotate(${randomAngle}deg) scale(1.5)`; // Slightly larger for impact
+      letterElement.style.opacity = 0;
+
+      titleContainer.appendChild(letterElement);
+    });
+
+    // Animate letters using GSAP
+    gsap.to(".letter", {
+      duration: 1.5, // Total duration for rush-in
+      ease: "power3.out", // Smooth, pleasing easing
+      x: (i) => {
+        // Calculate final position (centered, evenly spaced)
+        const letterWidth = 20; // Adjusted for smaller font (reduced from 25 to 20)
+        const totalWidth = letters.length * letterWidth;
+        const startX = (window.innerWidth - totalWidth) / 2;
+        return startX + (i * letterWidth); // Center horizontally
+      },
+      y: () => window.innerHeight / 2 - 80, // Adjusted vertically for smaller font
+      opacity: 1,
+      rotation: 0, // Reset rotation to 0
+      scale: 1, // Reset scale to normal size
+      stagger: 0.05, // Slight stagger for a flowing effect
+      onComplete: () => {
+        // Create final static title after animation
+        const finalTitle = document.createElement("h1");
+        finalTitle.id = "final-title";
+        finalTitle.textContent = titleText;
+        finalTitle.style.opacity = 0; // Start hidden for fade-in
+        titleContainer.innerHTML = ""; // Clear animated letters
+        titleContainer.appendChild(finalTitle);
+
+        // Fade in the final title smoothly
+        gsap.to("#final-title", {
+          duration: 0.5,
+          opacity: 1,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    // Typing Effect for About Section (One Character at a Time, One Sentence at a Time)
+    const sentences = [
+      "Welcome to GOD LLC, a pioneering company dedicated to advancing the science of human communication and persuasion.",
+      "Founded with a vision to explore the frontiers of influence, we are building cutting-edge frameworks that push the boundaries of how ideas are shared and understood in the digital age.",
+      "Our mission is twofold: to unlock the potential of persuasive technology for positive impact and to deepen our understanding of how such tools can be safeguarded against misuse.",
+      "At GOD LLC, we believe that by mastering the art and science of persuasion, we can empower individuals, protect communities, and shape a future where communication serves the greater good.",
+      "GOD LLC develops innovative systems designed to enhance online interaction and influence.",
+      "Our work focuses on creating tools that amplify the power of human connection while studying their implications in real-world settings.",
+      "We’re not just building technology—we’re laying the groundwork for a safer, more informed digital landscape.",
+      "We aim to redefine persuasion for the modern era.",
+      "By blending advanced research with practical applications, GOD LLC strives to achieve breakthroughs that outpace traditional approaches to communication.",
+      "Our ultimate goal is to harness these insights to foster resilience against manipulation and promote ethical influence worldwide.",
+      "In an increasingly connected world, the ability to persuade and be persuaded shapes everything from personal decisions to global movements.",
+      "GOD LLC is committed to ensuring this power is understood, responsibly developed, and used to uplift rather than exploit.",
+      "Through our work, we’re creating a foundation for trust and transparency online."
+    ];
+
+    function typeText(elementId, text, speed = 50, callback) {
+      let i = 0;
+      const element = document.getElementById(elementId);
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          element.style.width = `${element.scrollWidth}px`; // Adjust width dynamically
+          i++;
+          setTimeout(type, speed);
+        } else {
+          element.style.borderRight = "none"; // Remove cursor at end
+          if (callback) setTimeout(callback, 1000); // 1-second pause before next sentence
+        }
+      }
+      type();
+    }
+
+    // Ensure the script runs after the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      let currentSentence = 0;
+      function typeNextSentence() {
+        if (currentSentence < sentences.length) {
+          typeText(`about-text-${currentSentence + 1}`, sentences[currentSentence], 50, () => {
+            currentSentence++;
+            typeNextSentence(); // Move to next sentence after delay
+          });
+        }
+      }
+      typeNextSentence();
+    });
+  </script>
 </body>
 </html>
